@@ -10,47 +10,22 @@
 	<OutcomeName>longitute</OutcomeName>
 	<OutcomeName>localizacao</OutcomeName>
 
-	<Reference name="AlertOn">
-		<Query name="alertOn">
+	<Reference name="ChangeTemp">
+		<Query name="changeTemp">
 			(OR
 				<!-- (EQUAL concentração de CO2 maior que 50%) -->
-				(GREATER co2 50)
+				(GREATER temperatura 1)
 			)
 		</Query>
-		<ServiceInput service="CarbonDioxideService" function="carbonDioxideControl">
-			<Attribute name="co2Detectado" />
-			<Attribute name="latitude" />
-			<Attribute name="longitute" />
-			<Attribute name="localizacao" />
+		<ServiceInput service="TemperatureHumidityService" function="temperatureHumidityMonitoring">
+			<Attribute name="temperatura" />
+			<Attribute name="umidade" />
 		</ServiceInput>
 		
-		<Outcome outAttribute="co2Detectado">
-			co2
-		</Outcome>
-		<Outcome outAttribute="latitude">
-			latitude
-		</Outcome>
-		<Outcome outAttribute="longitute">
-			longitute
-		</Outcome>
-		<Outcome outAttribute="localizacao">
-			localizacao
+		<Outcome outAttribute="temperatura">
+			temperatura
 		</Outcome>
 		
-	</Reference>
-	
-	<Reference name="AlertOff">
-		<Query name="alertOff">
-			(ELSE 
-				(QUERY alertOn)
-			)
-		</Query>
-		<Outcome outAttribute="co2Detectado">
-			co2
-		</Outcome>
-		<ServiceInput service="CarbonDioxideService" function="carbonDioxideControl">
-			<Attribute name="co2Detectado" />
-		</ServiceInput>
 	</Reference>
 	
 </Enactor>

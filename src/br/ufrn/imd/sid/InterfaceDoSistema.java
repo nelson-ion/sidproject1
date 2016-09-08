@@ -58,7 +58,7 @@ public class InterfaceDoSistema extends JPanel {
 
 
 
-    private void initComponents() {
+	private void initComponents() {
 
         title = new javax.swing.JLabel();
         linhaAbaixoDoTitulo = new javax.swing.JSeparator();
@@ -67,11 +67,18 @@ public class InterfaceDoSistema extends JPanel {
         labelIndencioDetectado = new javax.swing.JLabel();
         fireLabel = new javax.swing.JLabel();
         separadorVerticalEsquerdo = new javax.swing.JSeparator();
+        labelConcentracaoCO = new javax.swing.JLabel();
         concentracaoCO2JSlider = new javax.swing.JSlider();
-        labelConcentracaoCO2 = new javax.swing.JLabel();
-        labelRepresentacaoCO2 = new javax.swing.JLabel();
+        labelRepresentacaoCO = new javax.swing.JLabel();
         visorDePoluição = new javax.swing.JProgressBar();
         separadorVerticalDireito = new javax.swing.JSeparator();
+        labelTemperaturaUmidade = new javax.swing.JLabel();
+        labelSensorTemperatura = new javax.swing.JLabel();
+        sensorTemperaturaSlider = new javax.swing.JSlider();
+        temperaturaLabel = new javax.swing.JLabel();
+        labelSensorUmidade = new javax.swing.JLabel();
+        sensorUmidadeSlider = new javax.swing.JSlider();
+        umidadeLabel = new javax.swing.JLabel();
         console = new javax.swing.JTextArea();
 
         title.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -100,21 +107,53 @@ public class InterfaceDoSistema extends JPanel {
 
         separadorVerticalEsquerdo.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        labelConcentracaoCO.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        labelConcentracaoCO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelConcentracaoCO.setText("Concentração de CO2");
+
         concentracaoCO2JSlider.setMajorTickSpacing(10);
         concentracaoCO2JSlider.setPaintLabels(true);
         concentracaoCO2JSlider.setPaintTicks(true);
         concentracaoCO2JSlider.setValue(30);
         concentracaoCO2JSlider.setOpaque(true);
 
-        labelConcentracaoCO2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        labelConcentracaoCO2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelConcentracaoCO2.setText("Concentração de CO2");
-
-        labelRepresentacaoCO2.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
-        labelRepresentacaoCO2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelRepresentacaoCO2.setText("Representação do CO2");
+        labelRepresentacaoCO.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        labelRepresentacaoCO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelRepresentacaoCO.setText("Representação do CO2");
 
         separadorVerticalDireito.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        labelTemperaturaUmidade.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        labelTemperaturaUmidade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTemperaturaUmidade.setText("Temperatura e Umidade");
+
+        labelSensorTemperatura.setText("Temperatura");
+
+        sensorTemperaturaSlider.setMajorTickSpacing(5);
+        sensorTemperaturaSlider.setMinimum(-10);
+        sensorTemperaturaSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        sensorTemperaturaSlider.setPaintTrack(false);
+        sensorTemperaturaSlider.setValue(29);
+        sensorTemperaturaSlider.setOpaque(true);
+
+        temperaturaLabel.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        temperaturaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        temperaturaLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        temperaturaLabel.setOpaque(true);
+
+        labelSensorUmidade.setText("Umidade");
+
+        sensorUmidadeSlider.setMajorTickSpacing(5);
+        sensorUmidadeSlider.setMinimum(-10);
+        sensorUmidadeSlider.setOrientation(javax.swing.JSlider.VERTICAL);
+        sensorUmidadeSlider.setPaintTrack(false);
+        sensorUmidadeSlider.setValue(29);
+        sensorUmidadeSlider.setOpaque(true);
+
+        umidadeLabel.setFont(new java.awt.Font("Lucida Grande", 0, 20)); // NOI18N
+        umidadeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        umidadeLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        umidadeLabel.setOpaque(true);
 
         console.setEditable(false);
         console.setColumns(20);
@@ -127,28 +166,45 @@ public class InterfaceDoSistema extends JPanel {
             .addComponent(linhaAbaixoDoTitulo)
             .addGroup(layout.createSequentialGroup()
                 .addGap(186, 186, 186)
-                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(191, 191, 191))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(console)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelTemperatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fireLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelIndencioDetectado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(temperaturaJSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(labelTemperatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelIndencioDetectado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(temperaturaJSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(fireLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(separadorVerticalEsquerdo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelConcentracaoCO2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelRepresentacaoCO2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(labelConcentracaoCO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelRepresentacaoCO, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                             .addComponent(concentracaoCO2JSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(visorDePoluição, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(separadorVerticalDireito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(separadorVerticalDireito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTemperaturaUmidade, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(labelSensorTemperatura)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelSensorUmidade)
+                                .addGap(48, 48, 48))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(sensorTemperaturaSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(temperaturaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(sensorUmidadeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(umidadeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,19 +223,37 @@ public class InterfaceDoSistema extends JPanel {
                             .addComponent(temperaturaJSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(labelIndencioDetectado)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGap(18, 18, 18)
                             .addComponent(fireLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(separadorVerticalEsquerdo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(separadorVerticalDireito, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelConcentracaoCO2)
+                        .addComponent(labelConcentracaoCO)
                         .addGap(18, 18, 18)
                         .addComponent(concentracaoCO2JSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(labelRepresentacaoCO2)
+                        .addComponent(labelRepresentacaoCO)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(visorDePoluição, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(separadorVerticalDireito, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelTemperaturaUmidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelSensorUmidade, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelSensorTemperatura, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(sensorTemperaturaSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sensorUmidadeSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(69, 69, 69)
+                                .addComponent(temperaturaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(umidadeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addComponent(console, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -190,15 +264,22 @@ public class InterfaceDoSistema extends JPanel {
     private javax.swing.JSlider concentracaoCO2JSlider;
     private javax.swing.JTextArea console;
     private javax.swing.JLabel fireLabel;
-    private javax.swing.JLabel labelConcentracaoCO2;
+    private javax.swing.JLabel labelConcentracaoCO;
     private javax.swing.JLabel labelIndencioDetectado;
-    private javax.swing.JLabel labelRepresentacaoCO2;
+    private javax.swing.JLabel labelRepresentacaoCO;
+    private javax.swing.JLabel labelSensorTemperatura;
+    private javax.swing.JLabel labelSensorUmidade;
     private javax.swing.JLabel labelTemperatura;
+    private javax.swing.JLabel labelTemperaturaUmidade;
     private javax.swing.JSeparator linhaAbaixoDoTitulo;
+    private javax.swing.JSlider sensorTemperaturaSlider;
+    private javax.swing.JSlider sensorUmidadeSlider;
     private javax.swing.JSeparator separadorVerticalDireito;
     private javax.swing.JSeparator separadorVerticalEsquerdo;
     private javax.swing.JSlider temperaturaJSlider;
+    private javax.swing.JLabel temperaturaLabel;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel umidadeLabel;
     private javax.swing.JProgressBar visorDePoluição;
     // End of variables declaration                   
 }

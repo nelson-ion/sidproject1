@@ -25,6 +25,12 @@ public class Applicacao {
 	protected Enactor co2Enactor;
 	protected IBAMAService ibamaService;
 
+	protected Widget temperaturaUmidadeSensorWidget;
+	protected Widget thWidget;
+	protected Enactor thEnactor;
+	protected TemperatureHumidityService temperatureHumidityService;
+	
+	
 	public Applicacao() {
 		super();
 		
@@ -42,9 +48,11 @@ public class Applicacao {
 		fireSensorWidget.updateData("localizacao", "Instituto Metropole Digital");
 
 		
+		
+		
 		// Sensor de concentração de Dióxido de Carbono
-		co2Sensor =  WidgetXmlParser.createWidget("widgets/ibama/concentracao-co2-sensor.xml");
-		ibamaWidget =  WidgetXmlParser.createWidget("widgets/ibama/ibama-widget.xml");
+		co2Sensor = WidgetXmlParser.createWidget("widgets/ibama/concentracao-co2-sensor.xml");
+		ibamaWidget = WidgetXmlParser.createWidget("widgets/ibama/ibama-widget.xml");
 		co2Enactor = EnactorXmlParser.createEnactor("widgets/ibama/co2-enactor.xml");
 		
 		ibamaService = new IBAMAService(ibamaWidget);
@@ -54,6 +62,16 @@ public class Applicacao {
 		co2Sensor.updateData("latitude", -5.8395);
 		co2Sensor.updateData("longitute", -35.2016142);
 		co2Sensor.updateData("localizacao", "Reitoria UFRN");
+		
+		
+		
+		
+		temperaturaUmidadeSensorWidget = WidgetXmlParser.createWidget("widgets/temperatura/temperatura-e-humidade-sensor.xml");
+		thWidget = WidgetXmlParser.createWidget("widgets/temperatura/th-widget.xml");
+//		thEnactor = EnactorXmlParser.createEnactor("widgets/temperatura/th-enactor.xml");
+		
+		temperatureHumidityService = new TemperatureHumidityService(thWidget);
+		thWidget.addService(temperatureHumidityService);
 		
 		
 		// Instância da interface informando o serviço e o widget
