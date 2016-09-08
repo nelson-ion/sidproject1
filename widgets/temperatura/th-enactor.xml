@@ -19,10 +19,14 @@
 		</Query>
 		<ServiceInput service="TemperatureHumidityService" function="temperatureHumidityMonitoring">
 			<Attribute name="temperatura" />
+			<Attribute name="umidade" />
 		</ServiceInput>
 		
 		<Outcome outAttribute="temperatura">
 			temperatura
+		</Outcome>
+		<Outcome outAttribute="umidade">
+			umidade
 		</Outcome>
 	</Reference>
 	
@@ -42,7 +46,6 @@
 	
 	
 	
-	<!-- 
 	<Reference name="HumUp">
 		<Query name="humUp">
 			(OR
@@ -71,7 +74,6 @@
 			umidade
 		</Outcome>
 	</Reference>
-	 -->
 	
 	
 	

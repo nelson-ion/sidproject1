@@ -53,7 +53,7 @@ public class Applicacao {
 		// Sensor de concentração de Dióxido de Carbono
 		co2Sensor = WidgetXmlParser.createWidget("widgets/ibama/concentracao-co2-sensor.xml");
 		ibamaWidget = WidgetXmlParser.createWidget("widgets/ibama/ibama-widget.xml");
-//		co2Enactor = EnactorXmlParser.createEnactor("widgets/ibama/co2-enactor.xml");
+		co2Enactor = EnactorXmlParser.createEnactor("widgets/ibama/co2-enactor.xml");
 		
 		ibamaService = new IBAMAService(ibamaWidget);
 		ibamaWidget.addService(ibamaService);

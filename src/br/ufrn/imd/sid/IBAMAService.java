@@ -43,16 +43,12 @@ public class IBAMAService extends Service {
 			float latitude = serviceInput.getInput().getAttributeValue("latitude");
 			float longitute = serviceInput.getInput().getAttributeValue("longitute");
 			
-//			fireLabel.setBackground(Color.RED);
-//			fireLabel.setText("Sim!!");
 			consoleTextArea.setText("");
 			consoleTextArea.append("Alerta de Poluição!!\n");
 			consoleTextArea.append("Local: \t" + local + "\n");
 			consoleTextArea.append("Latitude: \t" + latitude + "\n");
 			consoleTextArea.append("Longitute: \t" + longitute + "\n");
 		}else{
-//			fireLabel.setBackground(Color.LIGHT_GRAY);
-//			fireLabel.setText("Não");
 			consoleTextArea.setText("");
 		}
 		

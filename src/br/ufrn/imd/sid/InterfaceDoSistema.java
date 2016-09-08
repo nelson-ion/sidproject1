@@ -77,6 +77,13 @@ public class InterfaceDoSistema extends JPanel {
 		
 		short co2 = (short)concentracaoCO2JSlider.getValue();
 		co2Sensor.updateData("temperatura", co2);
+		
+		short temperatura2 = (short) sensorTemperaturaSlider.getValue();
+		temperaturaUmidadeSensorWidget.updateData("temperatura", temperatura2);
+		
+		short umidade = (short) sensorUmidadeSlider.getValue();
+		temperaturaUmidadeSensorWidget.updateData("umidade", umidade);
+		
 	}
 
 

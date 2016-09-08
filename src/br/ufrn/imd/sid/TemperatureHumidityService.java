@@ -35,11 +35,11 @@ public class TemperatureHumidityService extends Service {
 	public DataObject execute(ServiceInput serviceInput) {
 		// Obtendo atributo do widget.
 		short temperatura = serviceInput.getInput().getAttributeValue("temperatura");
-//		short umidade = serviceInput.getInput().getAttributeValue("umidade");
+		short umidade = serviceInput.getInput().getAttributeValue("umidade");
 		
-		if(temperaturaLabel != null ){//&& umidadeLabel != null){
+		if(temperaturaLabel != null && umidadeLabel != null){
 			temperaturaLabel.setText(String.valueOf(temperatura) + "ºC");
-//			umidadeLabel.setText(String.valueOf(umidade) + "%");
+			umidadeLabel.setText(String.valueOf(umidade) + "%");
 			
 		}
 		
