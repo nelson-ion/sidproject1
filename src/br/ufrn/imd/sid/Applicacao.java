@@ -53,7 +53,7 @@ public class Applicacao {
 		// Sensor de concentração de Dióxido de Carbono
 		co2Sensor = WidgetXmlParser.createWidget("widgets/ibama/concentracao-co2-sensor.xml");
 		ibamaWidget = WidgetXmlParser.createWidget("widgets/ibama/ibama-widget.xml");
-		co2Enactor = EnactorXmlParser.createEnactor("widgets/ibama/co2-enactor.xml");
+//		co2Enactor = EnactorXmlParser.createEnactor("widgets/ibama/co2-enactor.xml");
 		
 		ibamaService = new IBAMAService(ibamaWidget);
 		ibamaWidget.addService(ibamaService);
@@ -68,14 +68,15 @@ public class Applicacao {
 		
 		temperaturaUmidadeSensorWidget = WidgetXmlParser.createWidget("widgets/temperatura/temperatura-e-humidade-sensor.xml");
 		thWidget = WidgetXmlParser.createWidget("widgets/temperatura/th-widget.xml");
-//		thEnactor = EnactorXmlParser.createEnactor("widgets/temperatura/th-enactor.xml");
+		thEnactor = EnactorXmlParser.createEnactor("widgets/temperatura/th-enactor.xml");
 		
 		temperatureHumidityService = new TemperatureHumidityService(thWidget);
 		thWidget.addService(temperatureHumidityService);
 		
 		
 		// Instância da interface informando o serviço e o widget
-		interfaceApp = new InterfaceDoSistema(bombeirosService,fireSensorWidget,ibamaService,co2Sensor); 
+		interfaceApp = new InterfaceDoSistema(bombeirosService,fireSensorWidget,ibamaService,co2Sensor,
+				temperatureHumidityService,temperaturaUmidadeSensorWidget); 
 		
 	}
 

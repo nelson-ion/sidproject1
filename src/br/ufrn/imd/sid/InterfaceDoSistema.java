@@ -12,7 +12,7 @@ public class InterfaceDoSistema extends JPanel {
 	private static final long serialVersionUID = 4168529448909112298L;
 	
 	
-	public InterfaceDoSistema(BombeirosService bombeirosService, Widget fireSensorWidget, IBAMAService ibamaService, Widget co2Sensor) {
+	public InterfaceDoSistema(BombeirosService bombeirosService, Widget fireSensorWidget, IBAMAService ibamaService, Widget co2Sensor,TemperatureHumidityService temperatureHumidityService,Widget temperaturaUmidadeSensorWidget) {
 
 		// Construindo interface
 		initComponents();
@@ -45,6 +45,21 @@ public class InterfaceDoSistema extends JPanel {
 		ibamaService.concentracaoCO2 = this.visorDePoluição;
 		ibamaService.consoleTextArea = this.console;
 		
+		
+		
+		// adicionando o ChangeListener para o JSlider que simula a temperatura ambiente no sensor 
+		sensorTemperaturaSlider.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent evt) {
+				// Obtendo o valor do JSlider (temperatura vai de 0 até 250)
+				short temperatura = (short) sensorTemperaturaSlider.getValue();
+				temperaturaUmidadeSensorWidget.updateData("temperatura", temperatura);
+			}
+		});
+		temperatureHumidityService.temperaturaLabel = this.temperaturaLabel;
+		temperatureHumidityService.umidadeLabel = this.umidadeLabel;
+		
+		
 		/*
 		 * Init state of widgets
 		 */
@@ -58,7 +73,7 @@ public class InterfaceDoSistema extends JPanel {
 
 
 
-	private void initComponents() {
+    private void initComponents() {
 
         title = new javax.swing.JLabel();
         linhaAbaixoDoTitulo = new javax.swing.JSeparator();
@@ -130,9 +145,9 @@ public class InterfaceDoSistema extends JPanel {
         labelSensorTemperatura.setText("Temperatura");
 
         sensorTemperaturaSlider.setMajorTickSpacing(5);
+        sensorTemperaturaSlider.setMaximum(90);
         sensorTemperaturaSlider.setMinimum(-10);
         sensorTemperaturaSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        sensorTemperaturaSlider.setPaintTrack(false);
         sensorTemperaturaSlider.setValue(29);
         sensorTemperaturaSlider.setOpaque(true);
 
@@ -144,9 +159,7 @@ public class InterfaceDoSistema extends JPanel {
         labelSensorUmidade.setText("Umidade");
 
         sensorUmidadeSlider.setMajorTickSpacing(5);
-        sensorUmidadeSlider.setMinimum(-10);
         sensorUmidadeSlider.setOrientation(javax.swing.JSlider.VERTICAL);
-        sensorUmidadeSlider.setPaintTrack(false);
         sensorUmidadeSlider.setValue(29);
         sensorUmidadeSlider.setOpaque(true);
 
@@ -191,7 +204,7 @@ public class InterfaceDoSistema extends JPanel {
                         .addComponent(separadorVerticalDireito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelTemperaturaUmidade, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(labelTemperaturaUmidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(labelSensorTemperatura)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

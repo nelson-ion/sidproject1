@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="CO2Enactor">
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="THEnactor">
 
 	<InWidget  href="temperatura-e-humidade-sensor.xml" />
 	<OutWidget href="th-widget.xml" />
@@ -10,22 +10,34 @@
 	<OutcomeName>longitute</OutcomeName>
 	<OutcomeName>localizacao</OutcomeName>
 
-	<Reference name="ChangeTemp">
-		<Query name="changeTemp">
+	<Reference name="TempUp">
+		<Query name="tempUp">
 			(OR
-				<!-- (EQUAL concentração de CO2 maior que 50%) -->
-				(GREATER temperatura 1)
+				<!-- (EQUAL temperatura maior que 150ºC) -->
+				(GREATER temperatura 50)
 			)
 		</Query>
 		<ServiceInput service="TemperatureHumidityService" function="temperatureHumidityMonitoring">
 			<Attribute name="temperatura" />
-			<Attribute name="umidade" />
 		</ServiceInput>
 		
 		<Outcome outAttribute="temperatura">
 			temperatura
 		</Outcome>
-		
+	</Reference>
+	
+	<Reference name="TempDown">
+		<Query name="tempDown">
+			(ELSE 
+				(QUERY tempUp)
+			)
+		</Query>
+		<Outcome outAttribute="temperatura">
+			temperatura
+		</Outcome>
+		<ServiceInput service="TemperatureHumidityService" function="temperatureHumidityMonitoring">
+			<Attribute name="temperatura" />
+		</ServiceInput>
 	</Reference>
 	
 </Enactor>
