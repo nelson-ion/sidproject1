@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="RoomEnactor">
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="FireEnactor">
 
 	<InWidget  href="fire-sensor.xml" />
 	<OutWidget href="bombeiros-widget.xml" />
@@ -12,7 +12,7 @@
 	<Reference name="On">
 		<Query name="fireOn">
 			(OR
-				<!-- (EQUAL presence 0) -->
+				<!-- (EQUAL temperatura maior que 150ºC) -->
 				(GREATER temperatura 150)
 			)
 		</Query>
@@ -37,8 +37,6 @@
 		</Outcome>
 		
 	</Reference>
-	
-	
 	
 	<Reference name="Off">
 		<Query name="fireOff">

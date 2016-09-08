@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Widget xmlns="http://www.contexttoolkit.org/ctk" name="CarbonDioxideWidget">		
+	<Attributes>
+		<Attribute name="co2" type="short" />
+		<Attribute name="latitude" type="float" />
+		<Attribute name="longitute" type="float" />
+		<Attribute name="localizacao" type="String" />
+	</Attributes>	
+</Widget>
