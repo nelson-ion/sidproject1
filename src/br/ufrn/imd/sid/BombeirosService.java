@@ -20,15 +20,12 @@ public class BombeirosService extends Service {
 	public JTextArea consoleTextArea;
 
 	@SuppressWarnings("serial")
-	public BombeirosService(final Widget widget) {
-		super(widget, "FireService",
+	public BombeirosService(final Widget bombeirosWidget) {
+		super(bombeirosWidget, "FireService",
 				new FunctionDescriptions() {
 					{ // constructor
 						// define function for the service
-						add(new FunctionDescription(
-								"fireControl", 
-								"Sets the light level of the lamp", 
-								widget.getNonConstantAttributes()));
+						add(new FunctionDescription("fireControl", "Sets the light level of the lamp", bombeirosWidget.getNonConstantAttributes()));
 					}
 				}
 		);
@@ -43,12 +40,16 @@ public class BombeirosService extends Service {
 		
 		if(incendioDetectado){
 			String local = serviceInput.getInput().getAttributeValue("localizacao");
+			short latitude = serviceInput.getInput().getAttributeValue("latitude");
+			short longitute = serviceInput.getInput().getAttributeValue("longitute");
 			
 			fireLabel.setBackground(Color.RED);
 			fireLabel.setText("Sim!!");
 			consoleTextArea.setText("");
 			consoleTextArea.append("Incêndio Detectado!\n");
-			consoleTextArea.append("Local: " + local);
+			consoleTextArea.append("Local: " + local + "\n");
+			consoleTextArea.append("Latitude: " + latitude + "\n");
+			consoleTextArea.append("longitute: " + longitute + "\n");
 		}else{
 			fireLabel.setBackground(Color.LIGHT_GRAY);
 			fireLabel.setText("Não");

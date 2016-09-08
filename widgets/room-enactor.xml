@@ -5,26 +5,45 @@
 	<OutWidget href="bombeiros-widget.xml" />
 	
 	<OutcomeName>incendioDetectado</OutcomeName>
+	<OutcomeName>latitude</OutcomeName>
+	<OutcomeName>longitute</OutcomeName>
+	<OutcomeName>localizacao</OutcomeName>
 	
-	<Reference name="Off">
-		<Query name="lightOff">
+	<Reference name="On">
+		<Query name="fireOn">
 			(OR
 				<!-- (EQUAL presence 0) -->
 				(GREATER temperatura 150)
 			)
 		</Query>
+		<ServiceInput service="FireService" function="fireControl">
+			<Attribute name="incendioDetectado" />
+			<Attribute name="latitude" />
+			<Attribute name="longitute" />
+			<Attribute name="localizacao" />
+		</ServiceInput>
+		
 		<Outcome outAttribute="incendioDetectado">
 			true
 		</Outcome>
-		<ServiceInput service="FireService" function="fireControl">
-			<Attribute name="incendioDetectado" />
-		</ServiceInput>
+		<Outcome outAttribute="latitude">
+			latitude
+		</Outcome>
+		<Outcome outAttribute="longitute">
+			longitute
+		</Outcome>
+		<Outcome outAttribute="localizacao">
+			localizacao
+		</Outcome>
+		
 	</Reference>
 	
-	<Reference name="On">
-		<Query name="lightOn">
+	
+	
+	<Reference name="Off">
+		<Query name="fireOff">
 			(ELSE 
-				(QUERY lightOff)
+				(QUERY fireOn)
 			)
 		</Query>
 		<Outcome outAttribute="incendioDetectado">

@@ -29,7 +29,7 @@ public class Applicacao {
 		// Definindo os atributos de localização para o sensor
 		fireSensorWidget.updateData("latitude", -5.8323);
 		fireSensorWidget.updateData("longitute", -35.2053022);
-		fireSensorWidget.updateData("localizacao", "Instituto Metrópole Digital");
+		fireSensorWidget.updateData("localizacao", "Instituto Metropole Digital");
 		
 		
 		bombeirosService = new BombeirosService(bombeirosWidget);
