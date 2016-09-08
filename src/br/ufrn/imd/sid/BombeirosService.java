@@ -58,8 +58,6 @@ public class BombeirosService extends Service {
 			fireLabel.setText("Não");
 		}
 		
-		// Olhando o que há no background.
-		System.out.println(fireLabel.getBackground());
 		return new DataObject(); // no particular info to return
 	}
 

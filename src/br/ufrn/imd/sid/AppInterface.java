@@ -2,18 +2,12 @@ package br.ufrn.imd.sid;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import context.arch.widget.Widget;
 
 public class AppInterface extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
-	//Variáveis do programa
-	JLabel lightLabelLocal;
-	Widget fireWidgetLocal;
 	
 //	private float fontSize = 20f;
 	
@@ -28,8 +22,6 @@ public class AppInterface extends JPanel {
 	
 	public AppInterface(JLabel lightLabel, Widget fireWidget) {
         initComponents();
-        this.lightLabelLocal = lightLabel;
-        this.fireWidgetLocal = fireWidget;
     }
 
     private void initComponents() {
@@ -110,41 +102,8 @@ public class AppInterface extends JPanel {
         );
     
         
-        conectarSensorDeFogo();
         
-        inicializarTudo();
     }
-
-	private void inicializarTudo() {
-		/*
-		 * Init state of widgets
-		 */
-		short temperatura = (short)temperaturaJSlider.getValue();
-//		int presence = (Integer) presenceSpinner.getValue();
-		fireWidgetLocal.updateData("temperatura", temperatura);
-//		fireWidgetLocal.updateData("presence", presence);		
-	}
-
-	private void conectarSensorDeFogo() {
-//		temperaturaJSlider = new JSlider(new DefaultBoundedRangeModel(28, 0, 0, 250)) {{
-//			setOpaque(true); // to allow background color to show
-//			setMajorTickSpacing(50);
-//			setPaintTicks(true);
-//			setPaintLabels(true);
-//		}};
-		
-		temperaturaJSlider.addChangeListener(new ChangeListener() {
-			@Override
-			public void stateChanged(ChangeEvent evt) {
-				// Obtendo o valor do JSlider (temperatura vai de 0 até 250)
-				short temperatura = (short) temperaturaJSlider.getValue();
-				fireWidgetLocal.updateData("temperatura", temperatura);
-				
-				// set color to represent temperature level
-//				setBackground(new Color(temperatura, temperatura, temperatura));
-			}
-		});
-	}                        
 
 
     
