@@ -25,7 +25,7 @@ public class BombeirosService extends Service {
 				new FunctionDescriptions() {
 					{ // constructor
 						// define function for the service
-						add(new FunctionDescription("fireControl", "Sets the light level of the lamp", bombeirosWidget.getNonConstantAttributes()));
+						add(new FunctionDescription("fireControl", "Sets the service for fire control", bombeirosWidget.getNonConstantAttributes()));
 					}
 				}
 		);
@@ -39,6 +39,7 @@ public class BombeirosService extends Service {
 		
 		
 		if(incendioDetectado){
+			// Obtendo atributos do widget
 			String local = serviceInput.getInput().getAttributeValue("localizacao");
 			short latitude = serviceInput.getInput().getAttributeValue("latitude");
 			short longitute = serviceInput.getInput().getAttributeValue("longitute");

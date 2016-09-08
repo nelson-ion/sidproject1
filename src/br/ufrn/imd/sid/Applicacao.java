@@ -24,7 +24,7 @@ public class Applicacao {
 		
 		fireSensorWidget = WidgetXmlParser.createWidget("widgets/fire-sensor.xml");
 		bombeirosWidget = WidgetXmlParser.createWidget("widgets/bombeiros-widget.xml");
-		enactor = EnactorXmlParser.createEnactor("widgets/room-enactor.xml");
+		enactor = EnactorXmlParser.createEnactor("widgets/enactor.xml");
 		
 		// Definindo os atributos de localização para o sensor
 		fireSensorWidget.updateData("latitude", -5.8323);
