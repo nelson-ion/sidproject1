@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Enactor xmlns="http://www.contexttoolkit.org/ctk" name="THEnactor">
 
-	<InWidget  href="temperatura-e-humidade-sensor.xml" />
+	<InWidget  href="temperatura-e-umidade-sensor.xml" />
 	<OutWidget href="th-widget.xml" />
 	
 	<OutcomeName>temperatura</OutcomeName>
@@ -32,12 +32,48 @@
 				(QUERY tempUp)
 			)
 		</Query>
-		<Outcome outAttribute="temperatura">
-			temperatura
-		</Outcome>
 		<ServiceInput service="TemperatureHumidityService" function="temperatureHumidityMonitoring">
 			<Attribute name="temperatura" />
 		</ServiceInput>
+		<Outcome outAttribute="temperatura">
+			temperatura
+		</Outcome>
 	</Reference>
+	
+	
+	
+	<!-- 
+	<Reference name="HumUp">
+		<Query name="humUp">
+			(OR
+				(GREATER umidade 50)
+			)
+		</Query>
+		<ServiceInput service="TemperatureHumidityService" function="temperatureHumidityMonitoring">
+			<Attribute name="umidade" />
+		</ServiceInput>
+		
+		<Outcome outAttribute="umidade">
+			umidade
+		</Outcome>
+	</Reference>
+	
+	<Reference name="HumDown">
+		<Query name="humDown">
+			(ELSE 
+				(QUERY humUp)
+			)
+		</Query>
+		<ServiceInput service="TemperatureHumidityService" function="temperatureHumidityMonitoring">
+			<Attribute name="umidade" />
+		</ServiceInput>
+		<Outcome outAttribute="umidade">
+			umidade
+		</Outcome>
+	</Reference>
+	 -->
+	
+	
+	
 	
 </Enactor>

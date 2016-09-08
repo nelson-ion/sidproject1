@@ -66,7 +66,7 @@ public class Applicacao {
 		
 		
 		
-		temperaturaUmidadeSensorWidget = WidgetXmlParser.createWidget("widgets/temperatura/temperatura-e-humidade-sensor.xml");
+		temperaturaUmidadeSensorWidget = WidgetXmlParser.createWidget("widgets/temperatura/temperatura-e-umidade-sensor.xml");
 		thWidget = WidgetXmlParser.createWidget("widgets/temperatura/th-widget.xml");
 		thEnactor = EnactorXmlParser.createEnactor("widgets/temperatura/th-enactor.xml");
 		

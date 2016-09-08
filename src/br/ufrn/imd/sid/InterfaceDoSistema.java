@@ -57,6 +57,15 @@ public class InterfaceDoSistema extends JPanel {
 			}
 		});
 		temperatureHumidityService.temperaturaLabel = this.temperaturaLabel;
+		
+		sensorUmidadeSlider.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent evt) {
+				// Obtendo o valor do JSlider (temperatura vai de 0 até 250)
+				short umidade = (short) sensorUmidadeSlider.getValue();
+				temperaturaUmidadeSensorWidget.updateData("umidade", umidade);
+			}
+		});
 		temperatureHumidityService.umidadeLabel = this.umidadeLabel;
 		
 		

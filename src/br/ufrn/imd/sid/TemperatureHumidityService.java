@@ -37,9 +37,9 @@ public class TemperatureHumidityService extends Service {
 		short temperatura = serviceInput.getInput().getAttributeValue("temperatura");
 //		short umidade = serviceInput.getInput().getAttributeValue("umidade");
 		
-		if(temperaturaLabel != null){
+		if(temperaturaLabel != null ){//&& umidadeLabel != null){
 			temperaturaLabel.setText(String.valueOf(temperatura) + "ºC");
-//			umidadeLabel.setText(String.valueOf(umidade));
+//			umidadeLabel.setText(String.valueOf(umidade) + "%");
 			
 		}
 		
