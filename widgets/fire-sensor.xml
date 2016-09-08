@@ -3,5 +3,8 @@
 	<Attributes>
 		<Attribute name="presence" type="int" />
 		<Attribute name="temperatura" type="short" />
+		<Attribute name="latitude" type="short" />
+		<Attribute name="longitute" type="short" />
+		<Attribute name="localizacao" type="string" />
 	</Attributes>	
 </Widget>

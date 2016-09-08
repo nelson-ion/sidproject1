@@ -32,35 +32,33 @@ import context.arch.widget.WidgetXmlParser;
  * 	<li>Combining models</li>
  * </ol>
  * Running this program would launch a GUI simulation of a room sensor suite
- * with brightness and presence sensors, and lamp light level.
+ * with brilho and presence sensors, and lamp light level.
  * 
- * @author Brian Y. Lim
- *
  */
-public class HelloRoom {
+public class Applicacao {
 	
 	protected Widget roomWidget;
 	protected Widget lightWidget;
 
 	protected Enactor enactor;
 	
-	protected LightService lightService;
+	protected BombeirosService lightService;
 	
 	protected HelloRoomUI ui;
 
-	public HelloRoom() {
+	public Applicacao() {
 		super();
 		
 		/*
 		 * Room sensor Widget
 		 */
-		roomWidget = WidgetXmlParser.createWidget("widgets/room-widget.xml");
+		roomWidget = WidgetXmlParser.createWidget("widgets/fire-sensor.xml");
 		
 		/*
 		 * Light actuator Widget and Service
 		 */
-		lightWidget = WidgetXmlParser.createWidget("widgets/light-widget.xml");
-		lightService = new LightService(lightWidget);
+		lightWidget = WidgetXmlParser.createWidget("widgets/bombeiros-widget.xml");
+		lightService = new BombeirosService(lightWidget);
 		lightWidget.addService(lightService);
 		
 		/*
@@ -69,7 +67,7 @@ public class HelloRoom {
 		enactor = EnactorXmlParser.createEnactor("widgets/room-enactor.xml");
 
 		// setup UI component
-		ui = new HelloRoomUI(lightService.lightLabel); // need to attach lightService before starting
+		ui = new HelloRoomUI(lightService.fireLabel); // need to attach lightService before starting
 	}
 	
 
@@ -96,13 +94,13 @@ public class HelloRoom {
 			 */
 			add(new JLabel("Temperatura") {{ setFont(getFont().deriveFont(fontSize)); }});
 			
-			//Definindo os valores (escala de temperatura) para o JSlider 
-			add(temperaturaJSlider = new JSlider(new DefaultBoundedRangeModel(250, 0, 0, 250)) {{
+			//Definindo os valores (escala de temperatura) para o JSlider e a temperatura inicial de 28ºC 
+			add(temperaturaJSlider = new JSlider(new DefaultBoundedRangeModel(28, 0, 0, 250)) {{
 				addChangeListener(new ChangeListener() {
 					@Override
 					public void stateChanged(ChangeEvent evt) {
 						// Obtendo o valor do JSlider (temperatura vai de 0 até 250)
-						short temperatura = (short)temperaturaJSlider.getValue();
+						short temperatura = (short) temperaturaJSlider.getValue();
 						roomWidget.updateData("temperatura", temperatura);
 						
 						// set color to represent temperature level
@@ -149,7 +147,7 @@ public class HelloRoom {
 			
 			
 			// UI for light level
-			add(new JLabel("light") {{ setFont(getFont().deriveFont(fontSize)); }});
+			add(new JLabel("Incêndio?") {{ setFont(getFont().deriveFont(fontSize)); }});
 			add(lightLabel);
 			
 			/*
@@ -166,7 +164,7 @@ public class HelloRoom {
 	public static void main(String[] args) {
 		Discoverer.start();
 		
-		HelloRoom app = new HelloRoom();
+		Applicacao app = new Applicacao();
 		
 		/*
 		 * GUI frame

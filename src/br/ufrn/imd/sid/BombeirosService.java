@@ -18,13 +18,13 @@ import context.arch.widget.Widget;
  * @author Brian Y. Lim
  *
  */
-public class LightService extends Service {
+public class BombeirosService extends Service {
 	
 	// package protected to be accessible to UI of HelloRoom app
-	JLabel lightLabel;
+	public JLabel fireLabel;
 
 	@SuppressWarnings("serial")
-	public LightService(final Widget widget) {
+	public BombeirosService(final Widget widget) {
 		super(widget, "LightService", 
 				new FunctionDescriptions() {
 					{ // constructor
@@ -40,27 +40,31 @@ public class LightService extends Service {
 		/*
 		 * set up light label (for use in a UI)
 		 */
-		lightLabel = new JLabel("0") {{
-			setHorizontalAlignment(JLabel.RIGHT);
+		fireLabel = new JLabel("0") {{
+			setHorizontalAlignment(JLabel.CENTER);
 			setBorder(BorderFactory.createEtchedBorder());
 			
 			setOpaque(true); // to allow background color to show
 			// set color to represent light level
-			setBackground(Color.black); // initially dark
+//			setBackground(Color.black); // initially dark
 		}};
 	}
 
 	@Override
 	public DataObject execute(ServiceInput serviceInput) {
 		// Obtendo atributo do widget.
-		int light = serviceInput.getInput().getAttributeValue("light");
+		boolean incendioDetectado = serviceInput.getInput().getAttributeValue("incendioDetectado");
 
-		// light is from 0 to 10
-		lightLabel.setText(String.valueOf(light));
-		lightLabel.setBackground(new Color(light*25, light*23, light*16));
+		if(incendioDetectado){
+			fireLabel.setBackground(Color.RED);
+			fireLabel.setText("Sim!!");
+		}else{
+			fireLabel.setBackground(Color.LIGHT_GRAY);
+			fireLabel.setText("Não");
+		}
 		
-		// Olhando o que há no bacground.
-		System.out.println(lightLabel.getBackground());
+		// Olhando o que há no background.
+		System.out.println(fireLabel.getBackground());
 		return new DataObject(); // no particular info to return
 	}
 
