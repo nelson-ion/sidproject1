@@ -50,7 +50,7 @@ public class BombeirosService extends Service {
 			consoleTextArea.append("Incêndio Detectado!\n");
 			consoleTextArea.append("Local: \t" + local + "\n");
 			consoleTextArea.append("Latitude: \t" + latitude + "\n");
-			consoleTextArea.append("longitute: \t" + longitute + "\n");
+			consoleTextArea.append("Longitute: \t" + longitute + "\n");
 		}else{
 			if(fireLabel != null && consoleTextArea != null){
 				fireLabel.setBackground(Color.LIGHT_GRAY);

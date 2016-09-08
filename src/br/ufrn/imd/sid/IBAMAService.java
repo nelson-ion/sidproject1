@@ -49,7 +49,7 @@ public class IBAMAService extends Service {
 			consoleTextArea.append("Alerta de Poluição!!\n");
 			consoleTextArea.append("Local: \t" + local + "\n");
 			consoleTextArea.append("Latitude: \t" + latitude + "\n");
-			consoleTextArea.append("longitute: \t" + longitute + "\n");
+			consoleTextArea.append("Longitute: \t" + longitute + "\n");
 		}else{
 //			fireLabel.setBackground(Color.LIGHT_GRAY);
 //			fireLabel.setText("Não");

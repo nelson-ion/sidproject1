@@ -114,9 +114,6 @@ public class InterfaceDoSistema extends JPanel {
         labelRepresentacaoCO2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelRepresentacaoCO2.setText("Representação do CO2");
 
-        visorDePoluição.setString("0 CO2");
-        visorDePoluição.setStringPainted(true);
-
         separadorVerticalDireito.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         console.setEditable(false);
