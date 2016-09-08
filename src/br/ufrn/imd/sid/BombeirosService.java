@@ -13,11 +13,6 @@ import context.arch.service.helper.FunctionDescriptions;
 import context.arch.service.helper.ServiceInput;
 import context.arch.widget.Widget;
 
-/**
- * Custom service for the room application to set the light level.
- * @author Brian Y. Lim
- *
- */
 public class BombeirosService extends Service {
 	
 	// package protected to be accessible to UI of HelloRoom app

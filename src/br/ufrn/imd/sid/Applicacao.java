@@ -22,27 +22,14 @@ import context.arch.enactor.EnactorXmlParser;
 import context.arch.widget.Widget;
 import context.arch.widget.WidgetXmlParser;
 
-/**
- * Main class for Hello World context-aware application of a living room smart lamp.
- * It demonstrates four steps to create a simple context-aware application:
- * <ol>
- * 	<li>Modeling context with Widgets</li>
- * 	<li>Modeling reasoning with Enactors</li>
- * 	<li>Modeling behavior with Services</li>
- * 	<li>Combining models</li>
- * </ol>
- * Running this program would launch a GUI simulation of a room sensor suite
- * with brilho and presence sensors, and lamp light level.
- * 
- */
 public class Applicacao {
 	
-	protected Widget roomWidget;
-	protected Widget lightWidget;
+	protected Widget fireWidget;
+	protected Widget bombeirosWidget;
 
 	protected Enactor enactor;
 	
-	protected BombeirosService lightService;
+	protected BombeirosService bombeirosService;
 	
 	protected HelloRoomUI ui;
 
@@ -52,14 +39,14 @@ public class Applicacao {
 		/*
 		 * Room sensor Widget
 		 */
-		roomWidget = WidgetXmlParser.createWidget("widgets/fire-sensor.xml");
+		fireWidget = WidgetXmlParser.createWidget("widgets/fire-sensor.xml");
 		
 		/*
 		 * Light actuator Widget and Service
 		 */
-		lightWidget = WidgetXmlParser.createWidget("widgets/bombeiros-widget.xml");
-		lightService = new BombeirosService(lightWidget);
-		lightWidget.addService(lightService);
+		bombeirosWidget = WidgetXmlParser.createWidget("widgets/bombeiros-widget.xml");
+		bombeirosService = new BombeirosService(bombeirosWidget);
+		bombeirosWidget.addService(bombeirosService);
 		
 		/*
 		 * Enactor to use rules about RoomWidget to update LightWidget
@@ -67,7 +54,7 @@ public class Applicacao {
 		enactor = EnactorXmlParser.createEnactor("widgets/room-enactor.xml");
 
 		// setup UI component
-		ui = new HelloRoomUI(lightService.fireLabel); // need to attach lightService before starting
+		ui = new HelloRoomUI(bombeirosService.fireLabel); // need to attach lightService before starting
 	}
 	
 
@@ -101,7 +88,7 @@ public class Applicacao {
 					public void stateChanged(ChangeEvent evt) {
 						// Obtendo o valor do JSlider (temperatura vai de 0 até 250)
 						short temperatura = (short) temperaturaJSlider.getValue();
-						roomWidget.updateData("temperatura", temperatura);
+						fireWidget.updateData("temperatura", temperatura);
 						
 						// set color to represent temperature level
 //						setBackground(new Color(temperatura, temperatura, temperatura));
@@ -115,6 +102,12 @@ public class Applicacao {
 
 			
 			
+			
+			// UI for light level
+			add(new JLabel("Incêndio?") {{ setFont(getFont().deriveFont(fontSize)); }});
+			add(lightLabel);
+			
+
 			
 			
 			
@@ -134,7 +127,7 @@ public class Applicacao {
 					@Override
 					public void stateChanged(ChangeEvent evt) {
 						int presence = (Integer) presenceSpinner.getValue();
-						roomWidget.updateData("presence", presence);
+						fireWidget.updateData("presence", presence);
 						
 						// color text red for when presence is red
 						if (presence == 0) { tf.setForeground(Color.red); }
@@ -145,18 +138,13 @@ public class Applicacao {
 			
 			
 			
-			
-			// UI for light level
-			add(new JLabel("Incêndio?") {{ setFont(getFont().deriveFont(fontSize)); }});
-			add(lightLabel);
-			
 			/*
 			 * Init state of widgets
 			 */
 			short temperatura = (short)temperaturaJSlider.getValue();
 			int presence = (Integer) presenceSpinner.getValue();
-			roomWidget.updateData("temperatura", temperatura);
-			roomWidget.updateData("presence", presence);
+			fireWidget.updateData("temperatura", temperatura);
+			fireWidget.updateData("presence", presence);
 		}
 		
 	}

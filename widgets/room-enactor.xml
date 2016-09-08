@@ -4,7 +4,7 @@
 	<InWidget  href="fire-sensor.xml" />
 	<OutWidget href="bombeiros-widget.xml" />
 	
-	<OutcomeName>light</OutcomeName>
+	<OutcomeName>incendioDetectado</OutcomeName>
 	
 	<Reference name="Off">
 		<Query name="lightOff">
