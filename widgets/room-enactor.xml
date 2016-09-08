@@ -14,9 +14,9 @@
 			)
 		</Query>
 		<Outcome outAttribute="incendioDetectado">
-			true <!-- valor original 0 (zero) -->
+			true
 		</Outcome>
-		<ServiceInput service="LightService" function="lightControl">
+		<ServiceInput service="FireService" function="fireControl">
 			<Attribute name="incendioDetectado" />
 		</ServiceInput>
 	</Reference>
@@ -28,9 +28,9 @@
 			)
 		</Query>
 		<Outcome outAttribute="incendioDetectado">
-			false <!-- 10 * Math.pow(150 - temperatura, 0.33) / Math.pow(150, 0.33); -->
+			false
 		</Outcome>
-		<ServiceInput service="LightService" function="lightControl">
+		<ServiceInput service="FireService" function="fireControl">
 			<Attribute name="incendioDetectado" />
 		</ServiceInput>
 	</Reference>

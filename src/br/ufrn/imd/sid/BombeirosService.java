@@ -3,8 +3,8 @@ package br.ufrn.imd.sid;
 
 import java.awt.Color;
 
-import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 
 import context.arch.comm.DataObject;
 import context.arch.service.Service;
@@ -15,47 +15,44 @@ import context.arch.widget.Widget;
 
 public class BombeirosService extends Service {
 	
-	// package protected to be accessible to UI of HelloRoom app
+	// elementos de interface para mostrar no painel de controle.
 	public JLabel fireLabel;
+	public JTextArea consoleTextArea;
 
 	@SuppressWarnings("serial")
 	public BombeirosService(final Widget widget) {
-		super(widget, "LightService", 
+		super(widget, "FireService",
 				new FunctionDescriptions() {
 					{ // constructor
 						// define function for the service
 						add(new FunctionDescription(
-								"lightControl", 
+								"fireControl", 
 								"Sets the light level of the lamp", 
 								widget.getNonConstantAttributes()));
 					}
 				}
 		);
 		
-		/*
-		 * set up light label (for use in a UI)
-		 */
-		fireLabel = new JLabel("0") {{
-			setHorizontalAlignment(JLabel.CENTER);
-			setBorder(BorderFactory.createEtchedBorder());
-			
-			setOpaque(true); // to allow background color to show
-			// set color to represent light level
-//			setBackground(Color.black); // initially dark
-		}};
 	}
 
 	@Override
 	public DataObject execute(ServiceInput serviceInput) {
 		// Obtendo atributo do widget.
 		boolean incendioDetectado = serviceInput.getInput().getAttributeValue("incendioDetectado");
-
+		
+		
 		if(incendioDetectado){
+			String local = serviceInput.getInput().getAttributeValue("localizacao");
+			
 			fireLabel.setBackground(Color.RED);
 			fireLabel.setText("Sim!!");
+			consoleTextArea.setText("");
+			consoleTextArea.append("Incêndio Detectado!\n");
+			consoleTextArea.append("Local: " + local);
 		}else{
 			fireLabel.setBackground(Color.LIGHT_GRAY);
 			fireLabel.setText("Não");
+			consoleTextArea.setText("");
 		}
 		
 		return new DataObject(); // no particular info to return
